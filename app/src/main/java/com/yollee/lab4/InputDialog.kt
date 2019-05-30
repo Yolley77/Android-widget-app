@@ -16,6 +16,7 @@ import android.app.NotificationManager
 import android.support.v4.app.NotificationCompat
 import android.app.PendingIntent
 import android.os.Build
+import java.util.*
 
 
 lateinit var resultValue: Intent
@@ -108,9 +109,17 @@ class InputDialog : AppCompatActivity() {
         val pendingIntent = PendingIntent.getBroadcast(baseContext, 0, notificationIntent, 0)
 
         //здесь календарю задаётся дата и время, затем он кидается в аларм
+        val notifyTime = Calendar.getInstance()
+        notifyTime.set(Calendar.HOUR_OF_DAY, 9)
+        notifyTime.set(Calendar.MINUTE, 0)
+        notifyTime.set(Calendar.SECOND, 0)
+        notifyTime.set(Calendar.YEAR, myYear)
+        notifyTime.set(Calendar.MONTH, myMonth)
+        notifyTime.set(Calendar.DAY_OF_MONTH, myDay)
 
-        if (Build.VERSION.SDK_INT >= 19) am?.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 3000, pendingIntent)
-        else am?.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 3000, pendingIntent)
+
+        if (Build.VERSION.SDK_INT >= 19) am?.setExact(AlarmManager.RTC_WAKEUP, notifyTime.timeInMillis, pendingIntent)
+        else am?.set(AlarmManager.RTC_WAKEUP, notifyTime.timeInMillis, pendingIntent)
 
         sp.edit().putString(WIDGET_DATE + widgetID, selectDate.text.toString()).apply()
         DateWidget.updateAppWidget(this, AppWidgetManager.getInstance(this), widgetID)
