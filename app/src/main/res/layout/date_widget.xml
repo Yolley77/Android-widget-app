@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:padding="@dimen/widget_margin"
+              android:background="@color/colorAccent" android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/appwidget_text"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            android:contentDescription="@string/appwidget_text"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:layout_marginTop="8dp" android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
+            android:layout_marginBottom="12dp"
+    />
+    <Button
+            android:text="Выбрать дату"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/setDate"
+            android:layout_marginBottom="8dp" android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@android:color/background_light"
+            android:textSize="14sp" android:background="@color/colorAccent" android:layout_weight="1"/>
+
+</LinearLayout>
